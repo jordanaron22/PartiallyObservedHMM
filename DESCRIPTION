@@ -1,0 +1,15 @@
+Package: PartiallyObservedHMM
+Type: Package
+Title: HMM for Partiall Observed Three Diagnostic Test Data 
+Version: 0.1.0
+Author: Jordan Aron
+Maintainer: <jordanaron22@gmail.com>
+Description: Functions for partially observed data HMM.  Data is composed of three diagnostic tests (i.e. HPV test, pap smear, and colposcopy).  
+   Partially observed data is represented as all possibilities in a 3-dimensional array.  First data source must be a 3-d array.  Second and third data sourced 
+   must be same size and have the same first 2-dimensions as the first data source.  We have adapted the forward-backward algorigthm to easily incorporate partially observed data. We run an EM algorithm where we estimate the initial probability vector, 
+   transition matrix, classification matrix, and probability of being a stayer.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.1
+Imports: stats 
