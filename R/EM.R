@@ -322,7 +322,7 @@ persitenceHelper <- function(val, one_back){
 #' @return list of three matrices, one for each test
 #'
 #' @export
-GenerateSimulatedData <- function(n,t,p,max2,max3){
+GenerateSimulatedData <- function(n,t,p,max2 = 3,max3 = 2){
   data_true_full <- GenerateData(n,t,p)
   data_true <- data_true_full[[1]]
   stayer_vec_true <- data_true_full[[2]]
@@ -1067,7 +1067,23 @@ CalcClassificationLin <- function(data,class, freq_vec, pi_0, forw, backw, likel
 #'     1) initial 2) transition 3) classification 4) stayer probability
 #'
 #' @export
-EM <- function(data_array, freq_vec, epsilon, init, tran, class, pi_0, max2, max3, time_length){
+EM <- function(data_array, freq_vec, epsilon,time_length, init = GetInit(), tran = GetTran(), class = GetClass(), pi_0 = .05, max2 = 3, max3 = 2){
+
+
+  k <- length(numOfStates(max2,max3))
+
+  if (length(init) != k){
+    stop("Initial vector is of the wrong length.  Must be of length ", k)
+  }
+
+  if (dim(tran)[1] != k & dim(tran)[2] != k){
+    stop("Transition Matrix is of the wrong dimension.  Must be ", k, " x ", k)
+  }
+
+  if (dim(class)[1] != k & dim(class)[2] != k){
+    stop("Classification Matrix is of the wrong dimension.  Must be ", k, " x ", k)
+  }
+
 
   init_og <- init
   tran_og <- tran
@@ -1145,7 +1161,24 @@ EM <- function(data_array, freq_vec, epsilon, init, tran, class, pi_0, max2, max
 #' @return (list of patternized data and frequency vector)
 #'
 #' @export
-CombineandPattern <- function(mat1_pers,mat2,mat3, max2, max3, reduce,time_length){
+CombineandPattern <- function(mat1_pers,mat2,mat3, reduce,time_length, max2 = 3, max3 = 2){
+
+  if (dim(mat1_pers)[1] != dim(mat2)[1] | dim(mat2)[1] != dim(mat3)[1] | dim(mat1_pers)[2] != dim(mat2)[2] | dim(mat2)[2] != dim(mat3)[2]){
+    stop("Dimensions of matrices do not match")
+  }
+
+  if(is.na(dim(mat1_pers)[3])){
+    stop("First parameter must be three-dimenional array")
+  }
+
+  if(max2 < max(mat2, na.rm = T)+1){
+    stop("Max2 is too small")
+  }
+
+  if(max3 < max(mat3, na.rm = T)+1){
+    stop("Max3 is too small")
+  }
+
   combined_data <- Combiner(mat1_pers,mat2,mat3, max2, max3,reduce)
   all_patterns <- GetPatterns(combined_data)
   unique_patterns <- as.data.frame(table(all_patterns), stringsAsFactors = F)
@@ -1160,18 +1193,10 @@ CombineandPattern <- function(mat1_pers,mat2,mat3, max2, max3, reduce,time_lengt
 
 ############
 
-# max2 <- 3
-# max3 <- 2
+# three_mats <- GenerateSimulatedData(3500,5,.05)
 #
-# three_mats <- GenerateSimulatedData(3500,5,.05,max2,max3)
-#
-# init <- GetInit()
-# tran <- GetTran()
-# class <- GetClass()
-# pi_0 <- .05
-#
-# data_pattern_list <- CombineandPattern(three_mats[[1]],three_mats[[2]],three_mats[[3]],max2,max3,T,5)
+# data_pattern_list <- CombineandPattern(three_mats[[1]],three_mats[[2]],three_mats[[3]],T,5)
 # data_pattern <- data_pattern_list[[1]]
 # freq_vec <- data_pattern_list[[2]]
 #
-# parameters <- EM(data_pattern,freq_vec,.01,init,tran,class,pi_0,max2,max3,5)
+# parameters <- EM(data_pattern,freq_vec,.01,5)
