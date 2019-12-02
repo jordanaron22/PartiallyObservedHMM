@@ -14,3 +14,18 @@ devtools::install_github("jordanaron22/PartiallyObservedHMM")
 ```
 
 -----
+
+## 2\. Examples 
+
+```{r}
+three_mats <- GenerateSimulatedData(n,t,pi_0)
+
+data_pattern_list <- CombineandPattern(three_mats[[1]],three_mats[[2]],three_mats[[3]],T,5)
+data_pattern <- data_pattern_list[[1]]
+freq_vec <- data_pattern_list[[2]]
+
+parameters <- EM(data_pattern,freq_vec,epsilon,t)
+```
+
+Where n is the number of individuals, t is the number of observations per individual, p is the proportion of stayers, and epsilon is the likelihood threshold for EM convergence. 
+
