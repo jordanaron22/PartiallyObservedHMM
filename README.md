@@ -5,6 +5,11 @@ Creates hidden Markov model (HMM) that accounts for partially observed data.  Pa
 In our example the first data source is an HPV test.  Persistence has been added so the data is now trichotomous (negative, newly-positive, persistent).  The second source is a pap smear, and the final source is a colposcopy.  
 
 -----
+## News
+
+- 12/02/19: Added 'read.me'
+
+-----
 
 ## 1\. Installation 
 
@@ -12,7 +17,6 @@ In our example the first data source is an HPV test.  Persistence has been added
 install.packages("devtools")
 devtools::install_github("jordanaron22/PartiallyObservedHMM")
 ```
-
 -----
 
 ## 2\. Examples 
@@ -41,4 +45,4 @@ freq_vec <- data_pattern_list[[2]]
 parameters <- EM(data_pattern,freq_vec,epsilon,t, initial, transition, classification, pi_0, max2, max3)
 ```
 
-Where the variables are defines similarly as above and: mat_one, mat_two, and mat_three are data sources for three unique tests, max2 is the number of possible outcomes in mat_two, max2 is the number of possible outcomes in mat_three, initial is an initial estimate for the vector of initial state probabilities, transition is an initial estimate for the state transition matrix, classification is an initial estimate for the state classification matrix, and pi_0 is an initial estimate of the proportion of stayers. 
+Where the variables are defined as above and: mat_one, mat_two, and mat_three are data sources for three unique tests, max2 is the number of possible outcomes in mat_two, max2 is the number of possible outcomes in mat_three, initial is an initial estimate for the vector of initial state probabilities, transition is an initial estimate for the state transition matrix, classification is an initial estimate for the state classification matrix, and pi_0 is an initial estimate of the proportion of stayers. 
