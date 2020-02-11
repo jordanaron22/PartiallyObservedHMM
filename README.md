@@ -7,6 +7,7 @@ In our example the first data source is an HPV test.  Persistence has been added
 -----
 ## News
 
+- 11/27/18: Created package
 - 12/02/19: Added 'read.me'
 - 02/10/20: Added Rafferty method functions and documentation 
 
