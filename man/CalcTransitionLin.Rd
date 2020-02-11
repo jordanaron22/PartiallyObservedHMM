@@ -42,5 +42,5 @@ CalcTransitionLin(
 estimates matrix of transition probabilities
 }
 \description{
-Calculates third expectation in supplementary materials section 1.2
+Calculates third expectation in section 2.6
 }

@@ -4,7 +4,15 @@
 \alias{CombineandPattern}
 \title{Combines three tests and patternizes them}
 \usage{
-CombineandPattern(mat1_pers, mat2, mat3, max2, max3, reduce, time_length)
+CombineandPattern(
+  mat1_pers,
+  mat2,
+  mat3,
+  reduce,
+  time_length,
+  max2 = 3,
+  max3 = 2
+)
 }
 \arguments{
 \item{mat1_pers}{3 dimensional data array of test 1}
@@ -13,13 +21,13 @@ CombineandPattern(mat1_pers, mat2, mat3, max2, max3, reduce, time_length)
 
 \item{mat3}{matrix for test 3}
 
-\item{max2}{number of values the second test can take on}
-
-\item{max3}{number of values the third test can take on}
-
 \item{reduce}{for StateCalculator if true, if the first two tests are negative imputes negative for the third test in Combiner}
 
 \item{time_length}{Number of observations per individual}
+
+\item{max2}{number of values the second test can take on}
+
+\item{max3}{number of values the third test can take on}
 }
 \value{
 (list of patternized data and frequency vector)

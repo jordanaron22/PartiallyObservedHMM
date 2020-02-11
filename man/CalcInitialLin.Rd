@@ -27,5 +27,5 @@ CalcInitialLin(data, freq_vec, pi_0, forw, backw, likelihoods, max2, max3)
 estimates vector of initial probabilities
 }
 \description{
-Calculates second expectation in supplementary materials section 1.2
+Calculates second expectation in section 2.6
 }
