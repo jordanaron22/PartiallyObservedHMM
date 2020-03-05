@@ -18,6 +18,7 @@ In our example the first data source is an HPV test.  Persistence has been added
 ```{r}
 install.packages("devtools")
 devtools::install_github("jordanaron22/PartiallyObservedHMM")
+library(PartiallyObservedHMM)
 ```
 -----
 
