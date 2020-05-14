@@ -9,7 +9,7 @@ In our example the first data source is an HPV test.  Persistence has been added
 
 - 11/27/19: Created package
 - 12/02/19: Added 'read.me'
-- 02/10/20: Added Rafferty method functions and documentation 
+- 02/10/20: Added Raftery method functions and documentation 
 - 03/05/20: QoL updates to readme 
 - 05/14/20: Bug fix for simulated data generation
 
@@ -76,7 +76,7 @@ parameters <- EM(data_pattern, freq_vec, epsilon, t, initial, transition, classi
 
 Where the variables are defined as above and: mat_one, mat_two, and mat_three are data sources for three unique tests, max2 is the number of possible outcomes in mat_two, max2 is the number of possible outcomes in mat_three, initial is an initial estimate for the vector of initial state probabilities, transition is an initial estimate for the state transition matrix, classification is an initial estimate for the state classification matrix, and pi_0 is an initial estimate of the proportion of stayers. 
 
-### 2.2 Second Order (Rafferty Method)
+### 2.2 Second Order (Raftery Method)
 
 #### 2.2.1 Simulated Data
 
