@@ -11,7 +11,7 @@ In our example the first data source is an HPV test.  Persistence has been added
 - 12/02/19: Added 'read.me'
 - 02/10/20: Added Rafferty method functions and documentation 
 - 03/05/20: QoL updates to readme 
-- 5/14/20: Bug fix for simulated data generation
+- 05/14/20: Bug fix for simulated data generation
 
 -----
 
