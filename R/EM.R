@@ -193,7 +193,7 @@ IntroduceMissingAll <- function(mat1,mat2,mat3, p_time){
   for (i in 1:dim(mat1)[1]){
     for (j in 1:dim(mat1)[2]){
       if (rbinom(1,1,p_time[j])){
-        mat1[i,j,] <- NA
+        mat1[i,j] <- NA
         mat2[i,j] <- NA
         mat3[i,j] <- NA
       }
@@ -344,9 +344,11 @@ GenerateSimulatedData <- function(n,t,p,max2 = 3,max3 = 2){
   cyt_obs <- IntroduceMissing(all_seperated[[2]], .003)
   colpo_obs <- IntroduceMissingColpo(hpv_obs, cyt_obs, all_seperated[[3]])
   hpv_obs[hpv_obs > 1] <- 1
-  hpv_pers_obs <- IntroducePersistence(hpv_obs)
+  data_obs_list <- IntroduceMissingAll(hpv_obs,cyt_obs, colpo_obs, c(0.001,0.157,0.206,0.228,0.169))
 
-  data_obs_list <- IntroduceMissingAll(hpv_pers_obs,cyt_obs, colpo_obs, c(0.001,0.157,0.206,0.228,0.169))
+  hpv_pers_obs <- IntroducePersistence(data_obs_list[[1]])
+  data_obs_list[[1]] <- hpv_pers_obs
+
   return(data_obs_list)
 }
 
